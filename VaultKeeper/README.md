@@ -1,17 +1,17 @@
-# 🔐 VaultKeeper - Secure Vault Application
+# VaultKeeper - Secure Vault Application
 
 ## Project Title and Description
 
 **VaultKeeper** is a secure web application that allows users to store, retrieve, update, and delete private words or codes linked to different platforms (bank PIN hints, Wi-Fi passphrases, email recovery codes, app unlock patterns) all in one place, secured behind authentication.
 
 ### Key Features
-- 🔒 Secure authentication with BCrypt password hashing
-- 📝 Complete CRUD operations for vault entries
-- 🎭 Secret masking (only last 2 characters visible)
-- 🍪 Cookie-based last platform memory (7 days expiry)
-- 🔍 Search/filter by platform name
-- 🚪 Session management with proper logout
-- 📱 Responsive, user-friendly interface
+-  Secure authentication with BCrypt password hashing
+-  Complete CRUD operations for vault entries
+-  Secret masking (only last 2 characters visible)
+-  Cookie-based last platform memory (7 days expiry)
+-  Search/filter by platform name
+-  Session management with proper logout
+-  Responsive, user-friendly interface
 
 
 ## Technology Stack
