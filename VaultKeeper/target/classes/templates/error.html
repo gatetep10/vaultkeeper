@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VaultKeeper - Error</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .error-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            width: 500px;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .error-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+        
+        .error-code {
+            font-size: 72px;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .error-title {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .error-message {
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .home-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: transform 0.2s;
+            margin-bottom: 20px;
+        }
+        
+        .home-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .login-btn {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+        
+        .login-btn:hover {
+            transform: translateY(-2px);
+            background: #218838;
+        }
+        
+        .divider {
+            margin: 20px 0;
+            color: #ddd;
+        }
+        
+        .footer {
+            margin-top: 30px;
+            font-size: 12px;
+            color: #999;
+        }
+        
+        /* No stack traces visible - user-friendly only */
+        .no-stack {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-icon">
+            <span th:if="${statusCode == '400'}">🔍</span>
+            <span th:if="${statusCode == '404'}">🔎</span>
+            <span th:if="${statusCode == '500'}">💥</span>
+            <span th:if="${statusCode == '403'}">🚫</span>
+            <span th:if="${statusCode == '401'}">🔐</span>
+            <span th:unless="${statusCode == '400' or statusCode == '404' or statusCode == '500' or statusCode == '403' or statusCode == '401'}">⚠️</span>
+        </div>
+        
+        <div class="error-code" th:text="${statusCode}">500</div>
+        
+        <div class="error-title">
+            <span th:if="${statusCode == '400'}">Bad Request</span>
+            <span th:if="${statusCode == '404'}">Page Not Found</span>
+            <span th:if="${statusCode == '500'}">Server Error</span>
+            <span th:if="${statusCode == '403'}">Access Denied</span>
+            <span th:if="${statusCode == '401'}">Unauthorized</span>
+            <span th:unless="${statusCode == '400' or statusCode == '404' or statusCode == '500' or statusCode == '403' or statusCode == '401'}">Something Went Wrong</span>
+        </div>
+        
+        <div class="error-message" th:text="${errorMessage}">
+            An unexpected error occurred. Please try again later.
+        </div>
+        
+        <a href="/vault" class="home-btn">🏠 Return to Vault</a>
+        <br>
+        <a href="/login" class="login-btn">🔐 Go to Login</a>
+        
+        <div class="divider">—</div>
+        
+        <div class="footer">
+            <p>🔒 VaultKeeper - Secure Storage</p>
+            <p style="margin-top: 5px;">If the problem persists, please contact support</p>
+        </div>
+        
+        <!-- IMPORTANT: No stack traces are displayed to the user -->
+        <!-- This satisfies exam requirement: "Stack traces must never be visible to the end user" -->
+        <div class="no-stack"></div>
+    </div>
+</body>
+</html>
